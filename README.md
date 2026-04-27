@@ -103,6 +103,11 @@ Implemented under `optimization/`:
 - Caching significantly improves repeated actions over the same dataset.
 - Better partition sizing improves cluster resource utilization and parallelism.
 
+
+RDD vs DataFrame vs SQL comes down to one question: do you want full manual control (RDD) or do you want Spark's optimizer to make your query smarter automatically (DataFrame/SQL)? In the taxi project, every query runs all three ways so you can measure that gap directly.
+The optimization section tests three knobs that affect performance independently — join strategy (avoid network shuffle), caching (avoid re-reading disk), and partitioning (tune parallelism). Each has a measurable, reproducible effect.
+
+
 ## 11) Results Gallery
 
 Execution screenshots are available in `results/screenshots/`.
